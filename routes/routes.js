@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.get("/", (req, res) => {
-    res.send("Homepage of GET method!cl")
+    res.send("Homepage of GET method!")
 })
 
 router.post("/adduser", async (req, res) => {
