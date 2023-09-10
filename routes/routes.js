@@ -30,4 +30,16 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    await User.findByIdAndDelete(userId);
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while deleting the user" });
+  }
+});
 module.exports = router;
