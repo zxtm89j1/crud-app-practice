@@ -24,7 +24,7 @@ router.post("/adduser", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const result = await User.find();
-    res.status(201).json(result);
+    res.status(200).json(result);
   } catch (error) {
     res.status(500).json({ error: "An error occured!!!" });
   }
@@ -34,7 +34,8 @@ router.delete("/:id", async (req, res) => {
   const userId = req.params.id;
 
   try {
-    await User.findByIdAndDelete(userId);
+    const data = await User.findByIdAndDelete(userId);
+    res.status(200).json(data);
   } catch (error) {
     console.error("Error deleting user:", error);
     res
